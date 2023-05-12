@@ -10,5 +10,18 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
+CREATE TABLE posts (
+    id INT NOT NULL AUTO_INCREMENT,
+    author VARCHAR (15) NOT NULL,
+    title VARCHAR (30) NOT NULL,
+    post_body VARCHAR (500) NOT NULL,
+    comment VARCHAR (250) NOT NULL,
+    created_at DATE NOT NULL,
+    user_id INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+
 
 
