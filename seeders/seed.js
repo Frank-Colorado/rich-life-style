@@ -4,4 +4,4 @@ const generateHash = () => {
   return crypto.randomBytes(32).toString("hex");
 };
 
-console.log(generateHas);
+console.log(generateHash());
