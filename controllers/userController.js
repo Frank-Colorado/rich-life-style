@@ -14,6 +14,35 @@ const createUser = async (req, res) => {
     console.log("Problem with createUser");
   }
 };
+
+const loginUser = async (req, res) => {
+  try {
+    const dbUserData = await User.findOne({
+      where: {
+        username: req.body.username,
+      },
+    });
+    if (!dbUserData) {
+      res.status(400).json({ message: "Incorrect username or password" });
+      return;
+    }
+    const validPassword = await dbUserData.checkPassword(req.body.password);
+    if (!validPassword) {
+      res.status(400).json({ message: "Incorrect username or password" });
+      return;
+    }
+    req.session.save(() => {
+      req.session.user_id = dbUserData.id;
+      req.session.logged_in = true;
+      res.status(200).json({ user: dbUserData, message: "Logged in" });
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(400).json(err);
+    console.log("Problem with loginUser");
+  }
+};
+
 const updateUser = async (req, res) => {
   try {
     const updatedUser = await User.findByPk(req.params.id);
