@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
-const bycrypt = require("bcrypt");
+const bcrypt = require("bcrypt");
 
 class User extends Model {
   // This is an instance method called 'checkPassword'
@@ -8,6 +8,7 @@ class User extends Model {
   // It's purpose is to check the userPassword against the hashedPassword
   async checkPassword(userPassword) {
     try {
+      return await bcrypt.compare(userPassword, this.password);
     } catch (err) {}
   }
 }
