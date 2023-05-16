@@ -53,6 +53,30 @@ User.init(
           console.log({ err });
         }
       },
+      // This is a hook that will automatically run before a user is updated
+      beforeUpdate: async (updatedUserData) => {
+        try {
+          if (updatedUserData.includes("password")) {
+            updatedUserData.password = await bcrypt.hash(
+              updatedUserData.password,
+              10
+            );
+          }
+
+          if (updatedUserData.includes("username")) {
+            updatedUserData.username = updatedUserData.username
+              .toLowerCase()
+              .trim();
+          }
+
+          if (updatedUserData.includes("email")) {
+            updatedUserData.email = updatedUserData.email.toLowerCase().trim();
+          }
+          return updatedUserData;
+        } catch (err) {
+          console.log({ err });
+        }
+      },
     },
     sequelize,
     timestamps: true,
