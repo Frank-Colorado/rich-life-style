@@ -40,6 +40,20 @@ User.init(
     },
   },
   {
+    // hooks will go here
+    hooks: {
+      // This is a hook that will automatically run before a new user is created
+      beforeCreate: async (newUserData) => {
+        try {
+          newUserData.password = await bcrypt.hash(newUserData.password, 10);
+          newUserData.username = newUserData.username.toLowerCase().trim();
+          newUserData.email = newUserData.email.toLowerCase().trim();
+          return newUserData;
+        } catch (err) {
+          console.log({ err });
+        }
+      },
+    },
     sequelize,
     timestamps: true,
     freezeTableName: true,
