@@ -8,3 +8,4 @@ CREATE DATABASE rich_lifestyle;
 
 
 
+
