@@ -1,6 +1,9 @@
 const createUser = async (req, res) => {
   try {
-    const newUser = await User.create({ username: req.body.username, password: req.body.password })
+    const newUser = await User.create({
+      username: req.body.username,
+      password: req.body.password,
+    });
     res.status(200).json(newUser);
   } catch (err) {
     res.status(400).json(err);
