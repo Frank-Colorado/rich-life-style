@@ -17,7 +17,7 @@ app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
 const sessionConfig = {
-  secret: "Super secret secret", // process.env.SESSION_SECRET
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
 };
