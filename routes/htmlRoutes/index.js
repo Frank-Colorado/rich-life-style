@@ -8,7 +8,7 @@ const {
   displayForum,
 } = require("../../controllers/htmlController");
 
-router.get("/", displayHome);
+router.get("/", withAuth, displayHome);
 router.get("/login", displayLogin);
 router.get("/dashboard", displayDash);
 router.get("/forum", displayForum);
