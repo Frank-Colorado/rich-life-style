@@ -36,6 +36,12 @@ const displayLogin = (req, res) => {
     heading: "Login Page",
   });
 };
+const displaySignUp = (req, res) => {
+  res.render("Signup", {
+    title: "Signup",
+    heading: "Signup Page",
+  });
+};
 
 const displayDash = (req, res) => {
   res.render("dashboard", {
@@ -51,11 +57,10 @@ const displayForum = (req, res) => {
   });
 };
 
-
 module.exports = {
   displayHome,
   displayLogin,
   displayDash,
   displayForum,
-  displaySignUp
+  displaySignUp,
 };
