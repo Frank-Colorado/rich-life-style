@@ -4,10 +4,10 @@ const $password = document.getElementById("password");
 const $loginBtn = document.getElementById("loginBtn");
 const $signupBtn = document.getElementById("signupBtn");
 
-$submitBtn.addEventListener("click", async (event) => {
+$loginBtn.addEventListener("click", async (event) => {
   event.preventDefault();
   const username = $username.value;
-  const password = $password.value;
+  const password = $password.value.trim();
 
   if (!username || !password) {
     return alert("Username and password must be provided");
