@@ -1,3 +1,4 @@
+const withAuth = require("../utils/auth");
 const router = require("express").Router();
 
 const { displayHome, displayDash, displayForum } = require("../../controllers/htmlController");
