@@ -21,6 +21,18 @@ const displayHome = async (req, res) => {
   }
 };
 
+const displayLogin = (req, res) => {
+  if (req.session.logged_in) {
+    // We render the login page
+    res.redirect("/");
+    return;
+  }
+  res.render("login", {
+    title: "Login",
+    heading: "Login Page",
+  });
+};
+
 module.exports = {
   displayHome,
 };
