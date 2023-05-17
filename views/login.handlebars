@@ -8,10 +8,10 @@
 </nav>
 
 <form class="p-5">
-  <div class="mb-1 col-2">
+  <div class="mb-1 col-3">
 
   </div>
-  <div class="mb-1 col-2">
+  <div class="mb-1 col-3">
     <label for="username" class="form-label">Username</label>
     <input type="username" class="form-control" id="username" />
   </div>
@@ -26,13 +26,14 @@
     />
 
   </div> --}}
-  <div class="mb-1 col-2">
+  <div class="mb-1 col-3">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="password" />
   </div>
 
-  <button id="loginBtn" type="submit" class="btn btn-info">Login</button>
-  <button id="signupBtn" type="submit" class="btn btn-info">Sign Up</button>
+  <button id="loginBtn" type="submit" class="btn btn-info mr-5">Login</button>
+  {{!-- //create an anchor text to signup page --}}
+  <a href="/signup" id="signup" class="btn btn-info ">To Sign Up Click here</a> 
 </form>
 
 <script src="/js/login.js"></script>
