@@ -1,8 +1,8 @@
-<form class="p-5">
-  <div class="mb-1 col-3">
+<form class="p-5 d-flex flex-column align-items-center">
+  <div class="mb-1 col-2">
 
   </div>
-  <div class="mb-1 col-3">
+  <div class="mb-1 col-2">
     <label for="username" class="form-label">Username</label>
     <input type="username" class="form-control" id="username" />
   </div>
@@ -17,14 +17,16 @@
     />
 
   </div> }}
-  <div class="mb-1 col-3">
+  <div class="mb-1 col-2">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="password" />
   </div>
 
-  <button id="loginBtn" type="submit" class="btn btn-info mr-5">Login</button>
+  <button id="loginBtn" type="submit" class="btn btn-info mt-3">Login</button>
   {{! //create an anchor text to signup page }}
-  <a href="/signup" id="signup" class="btn btn-info">To Sign Up Click Here</a>
+  <p class="pt-3">
+    <a href="/signup">Need an account? Click here to signup!</a>
+  </p>
 </form>
 
 <script src="/js/login.js"></script>
