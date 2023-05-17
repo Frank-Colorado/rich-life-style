@@ -24,4 +24,14 @@ Comment.belongsTo(User, {
   foreignKey: "user_id",
 });
 
+// Post Associations with Comment
+Post.hasMany(Comment, {
+  foreignKey: "post_id",
+  onDelete: "CASCADE",
+});
+
+Comment.belongsTo(Post, {
+  foreignKey: "post_id",
+});
+
 module.exports = { User, Post, Comment };
