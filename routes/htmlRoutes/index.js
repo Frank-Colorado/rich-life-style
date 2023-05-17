@@ -1,6 +1,7 @@
+const withAuth = require("../utils/auth");
 const router = require("express").Router();
 const { displayHome } = require("../../controllers/htmlController");
 
-router.get("/", displayHome);
+router.get("/", withAuth, displayHome);
 
 module.exports = router;
