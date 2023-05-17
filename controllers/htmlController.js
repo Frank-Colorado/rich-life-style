@@ -1,3 +1,5 @@
+const { User } = require("../models");
+
 // This is a function that displays the home page if the user is logged in, otherwise it redirects the user to the login page.
 const displayHome = async (req, res) => {
   try {
