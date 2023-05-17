@@ -9,7 +9,9 @@ class User extends Model {
   async checkPassword(userPassword) {
     try {
       return await bcrypt.compare(userPassword, this.password);
-    } catch (err) {}
+    } catch (err) {
+      console.log({ err });
+    }
   }
 }
 

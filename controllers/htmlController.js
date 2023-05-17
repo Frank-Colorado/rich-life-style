@@ -20,6 +20,8 @@ const displayHome = async (req, res) => {
   } catch (err) {
     // Any server error will be handled by this catch
     res.status(500).json({ err });
+    console.error({ err });
+    console.log("Problem with displayHome in htmlController.js");
   }
 };
 
