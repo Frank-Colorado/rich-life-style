@@ -1,3 +1,8 @@
+const $signupBtn = document.getElementById("signupBtn");
+const $username = document.getElementById("username");
+const $email = document.getElementById("email");
+const $password = document.getElementById("password");
+
 $signupBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   const username = $username.value;

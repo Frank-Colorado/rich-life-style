@@ -1,9 +1,7 @@
 const $username = document.getElementById("username");
-const $email = document.getElementById("email");
 const $password = document.getElementById("password");
 const $loginBtn = document.getElementById("loginBtn");
 const $signupLink = document.getElementById("signupLink");
-const $signupBtn = document.getElementById("signupBtn");
 
 $loginBtn.addEventListener("click", async (e) => {
   e.preventDefault();
