@@ -19,10 +19,20 @@ const displayForum = (req, res) => {
   });
 };
 
+const displaySignUp = (req, res) => {
+  res.render("signup", {
+    title: "Sign Up",
+    heading: "Sign Up Page",
+  });
+};
+
+
+
 
 module.exports = {
   displayHome,
   displayDash,
   displayForum,
+  displaySignUp
 };
 
