@@ -35,4 +35,5 @@ const displayLogin = (req, res) => {
 
 module.exports = {
   displayHome,
+  displayLogin,
 };
