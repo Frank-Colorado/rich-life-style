@@ -98,9 +98,27 @@ const logoutUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const updatedUser = await User.findByPk(req.params.id);
-    updatedUser.username = req.body.username;
-    res.status(200).json(updatedUser);
+    const { id } = req.params;
+    const { username, email, password } = req.body;
+
+    const userData = await User.update(
+      {
+        username,
+        email,
+        password,
+      },
+      {
+        where: { id },
+      }
+    );
+    if (!userData) {
+      res.status(404).json({ message: "No user found with this id!" });
+      return;
+    }
+    const updatedUserData = await User.findOne({
+      where: { id },
+    });
+    res.status(200).json(updatedUserData);
   } catch (err) {
     console.error(err);
     res.status(400).json(err);
