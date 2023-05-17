@@ -51,9 +51,11 @@ const displayForum = (req, res) => {
   });
 };
 
+
 module.exports = {
   displayHome,
   displayLogin,
   displayDash,
   displayForum,
+  displaySignUp
 };
