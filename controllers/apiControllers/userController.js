@@ -19,13 +19,16 @@ const createUser = async (req, res) => {
       req.session.logged_in = true;
       // We send a response to the client with the user's information
       res.status(200).json({ user: newUser, message: "Signed up!" });
+      console.error({ err });
+      console.log("Problem with createUser in userController.js");
     });
   } catch (err) {
     // If anything goes wrong, on the server side
     // We catch it and send a response with the error message
     console.error({ err });
     res.status(500).json({ err });
-    console.log("Problem with createUser");
+    console.error({ err });
+    console.log("Problem with createUser in userController.js");
   }
 };
 
