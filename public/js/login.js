@@ -33,18 +33,24 @@ $loginBtn.addEventListener("click", async (e) => {
 
 $signupBtn.addEventListener("click", async (e) => {
   e.preventDefault();
+  const username = $username.value;
+  const email = $email.value;
+  const password = $password.value.trim();
   try {
     const response = await fetch("/api/users/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        username: $username.value,
-        email: $email.value,
-        password: $password.value.trim(),
+        username,
+        email,
+        password,
       }),
     });
-    const data = await response.json();
-    location.reload();
+    if (response.ok) {
+      location.href = `/`;
+    } else {
+      alert("Failed to sign up");
+    }
   } catch (error) {
     alert(error);
   }
