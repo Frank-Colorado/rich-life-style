@@ -1,3 +1,4 @@
+const $loginForm = document.getElementById("loginForm");
 const $username = document.getElementById("username");
 const $password = document.getElementById("password");
 const $loginBtn = document.getElementById("loginBtn");
@@ -23,7 +24,15 @@ $loginBtn.addEventListener("click", async (e) => {
     if (response.ok) {
       location.href = `/`;
     } else {
-      alert("Incorrect username or password");
+      // create a new element
+      const alert = document.createElement("p");
+      // add the text to the element
+      alert.textContent = "Incorrect Username or Password!";
+      // add the color red to the text
+
+      alert.style.color = "red";
+      // add the element to the page
+      $loginForm.appendChild(alert);
     }
   } catch (error) {
     alert(error);
