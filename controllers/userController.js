@@ -1,20 +1,30 @@
 const { User } = require("../models");
 
+// This is a function called createUser that will be called with /api/users/signup
 const createUser = async (req, res) => {
   try {
+    // We create a new user with the username, password, and email that was entered in the signup form
     const newUser = await User.create({
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
     });
+    // After we create a new user, we create a session for the user
     req.session.save(() => {
+      // We save the user's id to the session
       req.session.user_id = newUser.id;
+      // We save the user's username to the session
       req.session.username = newUser.username;
+      // We save the user's logged_in status to the session as true
       req.session.logged_in = true;
+      // We send a response to the client with the user's information
       res.status(200).json({ user: newUser, message: "Signed up!" });
     });
   } catch (err) {
-    res.status(400).json({ err });
+    // If anything goes wrong, on the server side
+    // We catch it and send a response with the error message
+    console.error({ err });
+    res.status(500).json({ err });
     console.log("Problem with createUser");
   }
 };
@@ -45,7 +55,7 @@ const loginUser = async (req, res) => {
         .json({ message: "Incorrect username or password. Please try again!" });
       return;
     }
-    // If the username and password are valid, we save the user's id to the session
+    // If the username and password are valid, we create a session for the user
     req.session.save(() => {
       // We save the user's id to the session
       req.session.user_id = dbUserData.id;
@@ -56,10 +66,10 @@ const loginUser = async (req, res) => {
       // We send a response to the client with the user's information
       res.status(200).json({ user: dbUserData, message: "Logged in" });
     });
+  } catch (err) {
     // If anything goes wrong, on the server side
     // We catch it and send a response with the error message
-  } catch (err) {
-    console.error(err);
+    console.error({ err });
     // The error status is 500 for a server error
     res.status(500).json({ err });
     console.log("Problem with loginUser");
