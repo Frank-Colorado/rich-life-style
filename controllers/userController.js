@@ -7,10 +7,14 @@ const createUser = async (req, res) => {
       password: req.body.password,
       email: req.body.email,
     });
-    res.status(200).json(newUser);
+    req.session.save(() => {
+      req.session.user_id = newUser.id;
+      req.session.username = newUser.username;
+      req.session.logged_in = true;
+      res.status(200).json({ user: newUser, message: "Signed up!" });
+    });
   } catch (err) {
-    console.error(err);
-    res.status(400).json(err);
+    res.status(400).json({ err });
     console.log("Problem with createUser");
   }
 };
