@@ -107,21 +107,27 @@ const updateUser = async (req, res) => {
     console.log("Problem with updateUser");
   }
 };
+
+// This is a function called deleteUser that will be called with /api/users/:id (DELETE)
 const deleteUser = async (req, res) => {
   try {
+    // We destroy the user in the User model with the id that was sent to us in the params of the request
     const deletedUser = await User.destroy({
       where: {
         id: req.params.id,
       },
     });
+    // If no user was found with the id that was sent to us, we return an error message
     if (!deletedUser) {
       res.status(404).json({ message: "No user found with this id!" });
       return;
     }
+    // If a user was found with the id that was sent to us, we send a response with the deleted user's information
     res.status(200).json(deletedUser);
   } catch (err) {
+    // If any serverside error occurs, we catch it and send a response with the error message
     console.error(err);
-    res.status(400).json(err);
+    res.status(500).json(err);
     console.log("Problem with deleteUser");
   }
 };
