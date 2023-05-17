@@ -41,6 +41,9 @@ $signupBtn.addEventListener("click", async (e) => {
   const username = $username.value;
   const email = $email.value;
   const password = $password.value.trim();
+  if (!username || !email || !password) {
+    return alert("Username, email and password must be provided");
+  }
   try {
     const response = await fetch("/api/users/signup", {
       method: "POST",
@@ -54,7 +57,7 @@ $signupBtn.addEventListener("click", async (e) => {
     if (response.ok) {
       location.href = `/`;
     } else {
-      alert("Failed to sign up");
+      alert("Username or email already exists");
     }
   } catch (error) {
     alert(error);
