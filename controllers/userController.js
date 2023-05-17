@@ -76,6 +76,26 @@ const loginUser = async (req, res) => {
   }
 };
 
+// This is a function called logoutUser that will be called with /api/users/logout
+const logoutUser = async (req, res) => {
+  try {
+    // If the user is logged in, we destroy the session
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      // If the user is not logged in, we send a 404 error
+      res.status(404).end();
+    }
+  } catch (err) {
+    // If any serverside error occurs, we catch it and send a response with the error message
+    console.error(err);
+    res.status(500).json(err);
+    console.log("Problem with logoutUser");
+  }
+};
+
 const updateUser = async (req, res) => {
   try {
     const updatedUser = await User.findByPk(req.params.id);
