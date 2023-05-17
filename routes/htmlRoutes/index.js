@@ -1,9 +1,15 @@
-const withAuth = require("../utils/auth");
+const withAuth = require("../../utils/auth");
 const router = require("express").Router();
 
-const { displayHome, displayDash, displayForum } = require("../../controllers/htmlController");
+const {
+  displayHome,
+  displayLogin,
+  displayDash,
+  displayForum,
+} = require("../../controllers/htmlController");
 
 router.get("/", displayHome);
+router.get("/login", displayLogin);
 router.get("/dashboard", displayDash);
 router.get("/forum", displayForum);
 
