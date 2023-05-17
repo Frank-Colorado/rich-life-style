@@ -90,17 +90,21 @@ const logoutUser = async (req, res) => {
     }
   } catch (err) {
     // If any serverside error occurs, we catch it and send a response with the error message
-    console.error(err);
-    res.status(500).json(err);
+    console.error({ err });
+    res.status(500).json({ err });
     console.log("Problem with logoutUser");
   }
 };
 
+// This is a function called updateUser that will be called with /api/users/:id (PUT)
 const updateUser = async (req, res) => {
   try {
+    // We destructure the id from the params of the request
     const { id } = req.params;
+    // We destructure the username, email, and password from the body of the request
     const { username, email, password } = req.body;
 
+    // We update the user in the User model with the id that was sent to us in the params of the request
     const userData = await User.update(
       {
         username,
@@ -111,17 +115,21 @@ const updateUser = async (req, res) => {
         where: { id },
       }
     );
+    // If no user was found with the id that was sent to us, we return a 404 error message
     if (!userData) {
       res.status(404).json({ message: "No user found with this id!" });
       return;
     }
+    // We then grab the updated user's information from the database
     const updatedUserData = await User.findOne({
       where: { id },
     });
+    // We return a response with the updated user's information
     res.status(200).json(updatedUserData);
   } catch (err) {
-    console.error(err);
-    res.status(400).json(err);
+    // If any serverside error occurs, we catch it and send a response with the error message
+    console.error({ err });
+    res.status(500).json({ err });
     console.log("Problem with updateUser");
   }
 };
@@ -144,8 +152,8 @@ const deleteUser = async (req, res) => {
     res.status(200).json(deletedUser);
   } catch (err) {
     // If any serverside error occurs, we catch it and send a response with the error message
-    console.error(err);
-    res.status(500).json(err);
+    console.error({ err });
+    res.status(500).json({ err });
     console.log("Problem with deleteUser");
   }
 };
