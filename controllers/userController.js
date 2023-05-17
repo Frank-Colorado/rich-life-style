@@ -109,8 +109,15 @@ const updateUser = async (req, res) => {
 };
 const deleteUser = async (req, res) => {
   try {
-    const deletedUser = await User.findByPk(req.params.id);
-    await deletedUser.destroy();
+    const deletedUser = await User.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!deletedUser) {
+      res.status(404).json({ message: "No user found with this id!" });
+      return;
+    }
     res.status(200).json(deletedUser);
   } catch (err) {
     console.error(err);
@@ -121,6 +128,7 @@ const deleteUser = async (req, res) => {
 module.exports = {
   createUser,
   loginUser,
+  logoutUser,
   updateUser,
   deleteUser,
 };
