@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User } = require("../../models");
 
 // This is a function called createUser that will be called with /api/users/signup
 const createUser = async (req, res) => {

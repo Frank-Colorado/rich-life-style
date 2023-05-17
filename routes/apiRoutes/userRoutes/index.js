@@ -5,7 +5,7 @@ const {
   logoutUser,
   updateUser,
   deleteUser,
-} = require("../../../controllers/userController");
+} = require("../../../controllers/apiControllers/userController");
 
 // This route will be called with /api/users/signup
 router.post("/signup", createUser);
