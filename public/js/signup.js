@@ -3,14 +3,21 @@ const $signupBtn = document.getElementById("signupBtn");
 const $username = document.getElementById("username");
 const $email = document.getElementById("email");
 const $password = document.getElementById("password");
+const $alert = document.getElementById("alert");
+
+const alertDisplay = (message) => {
+  // add the text to the element
+  $alert.textContent = message;
+};
 
 $signupBtn.addEventListener("click", async (e) => {
   e.preventDefault();
+  $alert.textContent = "";
   const username = $username.value;
   const email = $email.value;
   const password = $password.value.trim();
   if (!username || !email || !password) {
-    return alert("Username, email and password must be provided");
+    return alertDisplay("Username, email and password must be provided!");
   }
   try {
     const response = await fetch("/api/users/signup", {
@@ -25,15 +32,7 @@ $signupBtn.addEventListener("click", async (e) => {
     if (response.ok) {
       location.href = `/`;
     } else {
-      // create a new element
-      const alert = document.createElement("p");
-      // add the text to the element
-      alert.textContent = "Username or email already exists!";
-      // add the color red to the text
-
-      alert.style.color = "red";
-      // add the element to the page
-      $signupForm.appendChild(alert);
+      return alertDisplay("Username or email already exists!");
     }
   } catch (error) {
     alert(error);
