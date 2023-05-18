@@ -17,6 +17,8 @@ const alertDisplay = (message) => {
 $loginBtn.addEventListener("click", async (e) => {
   // We prevent the default behavior of the event
   e.preventDefault();
+  // We set any previous alert text to an empty string
+  $alert.textContent = "";
   // We get the values from the form
   const username = $username.value;
   const password = $password.value.trim();
