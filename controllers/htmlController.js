@@ -36,6 +36,7 @@ const displayLogin = (req, res) => {
     heading: "Login Page",
   });
 };
+
 const displaySignUp = (req, res) => {
   res.render("Signup", {
     title: "Signup",

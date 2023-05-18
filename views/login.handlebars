@@ -1,15 +1,13 @@
-
-
-<form class="p-5">
-  <div class="mb-1 col-3">
+<form id="loginForm" class="p-5 d-flex flex-column align-items-center">
+  <div class="mb-1 col-2">
 
   </div>
-  <div class="mb-1 col-3">
+  <div class="mb-1 col-2">
     <label for="username" class="form-label">Username</label>
     <input type="username" class="form-control" id="username" />
   </div>
 
-  {{!-- <div class="mb-1 col-2">
+  {{! <div class="mb-1 col-2">
     <label for="exampleInputEmail1" class="form-label">Email address</label>
     <input
       type="email"
@@ -18,15 +16,18 @@
       aria-describedby="emailHelp"
     />
 
-  </div> --}}
-  <div class="mb-1 col-3">
+  </div> }}
+  <div class="mb-1 col-2">
     <label for="exampleInputPassword1" class="form-label">Password</label>
     <input type="password" class="form-control" id="password" />
   </div>
 
-  <button id="loginBtn" type="submit" class="btn btn-info mr-5">Login</button>
-  {{!-- //create an anchor text to signup page --}}
-  <a href="/signup" id="signup" class="btn btn-info ">To Sign Up Click Here</a> 
+  <button id="loginBtn" type="submit" class="btn btn-info mt-3">Login</button>
+  {{! //create an anchor text to signup page }}
+  <p class="pt-3">
+    <a href="/signup">Need an account? Click here to signup!</a>
+  </p>
+  <p id="alert" style="color: red;"></p>
 </form>
 
 <script src="/js/login.js"></script>

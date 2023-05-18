@@ -1,27 +1,46 @@
-<form class="p-5">
-  <div class="mb-1 col-2">
+<form id="signupForm" class="p-5 d-flex flex-column align-items-center">
+  <div class="col-2">
 
   </div>
-  <div class="mb-1 col-2">
-    <label for="username" class="form-label">Username</label>
-    <input type="username" class="form-control" id="username" />
+  <div class="col-2">
+    <input
+      type="username"
+      class="form-control"
+      id="username"
+      placeholder="Enter Username ( 3-15 characters )"
+    />
+    <label for="username" class="ps-2 form-label">
+      You can use letters and numbers</label>
   </div>
 
-  <div class="mb-1 col-2">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
+  <div class="mb-4 col-2">
+    <label for="exampleInputEmail1" class="form-label"></label>
     <input
       type="email"
       class="form-control"
       id="email"
       aria-describedby="emailHelp"
+      placeholder="Enter email"
     />
 
   </div>
   <div class="mb-1 col-2">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="password" />
+
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      placeholder="Enter Password"
+    />
+    <label for="exampleInputPassword1" class="ps-2 form-label">
+      Use 8 or more characters
+    </label>
   </div>
-  <button id="signupBtn" type="submit" class="btn btn-info">Sign Up</button>
+  <button id="signupBtn" type="submit" class="btn btn-info mt-3">Sign Up</button>
+  <p class="pt-3">
+    <a href="/login">Already have an account? Click Here to login!</a>
+  </p>
+  <p id="alert" style="color: red;"></p>
 </form>
 
 <script src="/js/signup.js"></script>
