@@ -1,3 +1,4 @@
+const $signupForm = document.getElementById("signupForm");
 const $signupBtn = document.getElementById("signupBtn");
 const $username = document.getElementById("username");
 const $email = document.getElementById("email");
@@ -24,7 +25,16 @@ $signupBtn.addEventListener("click", async (e) => {
     if (response.ok) {
       location.href = `/`;
     } else {
-      alert("Username or email already exists");
+      alert("");
+      // create a new element
+      const alert = document.createElement("p");
+      // add the text to the element
+      alert.textContent = "Username or email already exists!";
+      // add the color red to the text
+
+      alert.style.color = "red";
+      // add the element to the page
+      $loginForm.appendChild(alert);
     }
   } catch (error) {
     alert(error);
