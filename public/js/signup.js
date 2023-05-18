@@ -10,6 +10,11 @@ const alertDisplay = (message) => {
   $alert.textContent = message;
 };
 
+const isValidUsername = (username) => {
+  const re = new RegExp(/^[a-zA-Z0-9]+$/);
+  return re.test(username);
+};
+
 $signupBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   $alert.textContent = "";
@@ -17,8 +22,13 @@ $signupBtn.addEventListener("click", async (e) => {
   const email = $email.value;
   const password = $password.value.trim();
   if (!username || !email || !password) {
-    return alertDisplay("Username, email and password must be provided!");
+    return alertDisplay("Username, email, and password must be provided!");
   }
+  const validUsername = isValidUsername(username);
+  if (!validUsername) {
+    return alertDisplay("Username must contain only letters and numbers!");
+  }
+
   try {
     const response = await fetch("/api/users/signup", {
       method: "POST",
