@@ -25,7 +25,6 @@ $signupBtn.addEventListener("click", async (e) => {
     if (response.ok) {
       location.href = `/`;
     } else {
-      alert("");
       // create a new element
       const alert = document.createElement("p");
       // add the text to the element
@@ -34,7 +33,7 @@ $signupBtn.addEventListener("click", async (e) => {
 
       alert.style.color = "red";
       // add the element to the page
-      $loginForm.appendChild(alert);
+      $signupForm.appendChild(alert);
     }
   } catch (error) {
     alert(error);
