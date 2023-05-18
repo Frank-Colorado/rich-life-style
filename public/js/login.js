@@ -3,6 +3,7 @@ const $username = document.getElementById("username");
 const $password = document.getElementById("password");
 const $loginBtn = document.getElementById("loginBtn");
 const $signupLink = document.getElementById("signupLink");
+const $alert = document.getElementById("alert");
 
 // This is a function called alertDisplay
 // It has 1 param called 'message'
