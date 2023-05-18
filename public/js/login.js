@@ -4,6 +4,13 @@ const $password = document.getElementById("password");
 const $loginBtn = document.getElementById("loginBtn");
 const $signupLink = document.getElementById("signupLink");
 
+// This is a function called alertDisplay
+// It has 1 param called 'message'
+// It's purpose is to display the message in the alert element
+const alertDisplay = (message) => {
+  $alert.textContent = message;
+};
+
 // This is an event listener that listens for a click on the login button
 // It has 1 param called 'e'
 $loginBtn.addEventListener("click", async (e) => {
@@ -15,7 +22,7 @@ $loginBtn.addEventListener("click", async (e) => {
   // We check if the username and password are empty
   if (!username || !password) {
     // If any of them are empty, we display an alert
-    return alert("Username and password must be provided");
+    return alertDisplay("Username and password must be provided!");
   }
 
   try {
@@ -32,15 +39,8 @@ $loginBtn.addEventListener("click", async (e) => {
     if (response.ok) {
       location.href = `/`;
     } else {
-      // create a new element
-      const alert = document.createElement("p");
-      // add the text to the element
-      alert.textContent = "Incorrect Username or Password!";
-      // add the color red to the text
-
-      alert.style.color = "red";
-      // add the element to the page
-      $loginForm.appendChild(alert);
+      // If the response is not ok, we display an alert
+      return alertDisplay("Incorrect username or password. Please try again!");
     }
   } catch (error) {
     console.log({ error });
