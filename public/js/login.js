@@ -46,7 +46,3 @@ $loginBtn.addEventListener("click", async (e) => {
     console.log({ error });
   }
 });
-
-$signupLink.addEventListener("click", () => {
-  location.href = `/signup`;
-});
