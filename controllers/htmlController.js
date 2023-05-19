@@ -65,14 +65,19 @@ const displayHome = async (req, res) => {
 
 const displayForum = async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          attributes: ["id", "content", "user_id", "post_id", "created_at"],
+        },
+      ],
     });
 
-    const user = userData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     res.render("forum", {
+      post,
       title: "Forum",
       heading: "Forum Page",
     });
