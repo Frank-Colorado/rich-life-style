@@ -4,6 +4,19 @@ const $postContent = document.getElementById("postContent");
 const $postBtn = document.getElementById("postBtn");
 const $alert = document.getElementById("alert");
 
+// create a function that will check the length of the title and content
+// if the length is greater than 0, enable the button
+// if the length is 0, disable the button
+const allowPost = () => {
+  if ($postTitle.value.length > 0 && $postContent.value.length > 0) {
+    $postBtn.disabled = false;
+  } else {
+    $postBtn.disabled = true;
+  }
+};
+
+document.addEventListener("input", allowPost);
+
 // This is a function called alertDisplay
 // It has 1 param called 'message'
 // It's purpose is to display the message in the alert element
