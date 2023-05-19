@@ -1,6 +1,6 @@
 const $postForm = document.getElementById("postForm");
-const $postTitle = document.getElementById("postTitle");
-const $postContent = document.getElementById("postContent");
+const $postTitle = document.getElementById("title");
+const $postContent = document.getElementById("content");
 const $postBtn = document.getElementById("postBtn");
 const $alert = document.getElementById("alert");
 
@@ -52,10 +52,13 @@ $postBtn.addEventListener("click", async (e) => {
     });
     // If the response is ok, we display an alert telling them the post was created
     if (response.ok) {
-      return alertDisplay("Post created!");
+      alertDisplay("Post created!");
+      // We reset the values of the form
+      $postTitle.value = "";
+      $postContent.value = "";
     } else {
       // If the response is not ok, we display an alert
-      return alertDisplay("Something went wrong. Please try again!");
+      alertDisplay("Something went wrong. Please try again!");
     }
   } catch (error) {
     console.log({ error });
