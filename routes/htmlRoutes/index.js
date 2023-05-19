@@ -16,7 +16,7 @@ router.get("/login", displayLogin);
 router.get("/signup", displaySignUp);
 // This route will display the home page
 router.get("/home", withAuth, displayHome);
-// This route will display the forum page
-router.get("/forum", withAuth, displayForum);
+// This route will display a specific post and its comments based on the post's id
+router.get("/forum/:id", withAuth, displayForum);
 
 module.exports = router;

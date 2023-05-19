@@ -1,19 +1,12 @@
-const { User } = require("../models");
+const { User, Post, Comment } = require("../models");
 
 // This is a function that displays the home page if the user is logged in, otherwise it redirects the user to the login page.
 const displayDash = async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findOne({
-      // We specify that we don't want the user's password to be returned
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
-    });
-    // We modify the userData so it can be used by handlebars
-    const user = userData.get({ plain: true });
-    // We render the user_profile with the user's data
+    // We render the user_profile with the user's data from the session
     res.render("Dashboard", {
-      user,
+      username: req.session.username,
+      loggedIn: req.session.logged_in,
       title: "Dashboard",
       heading: "User Dashboard",
     });
@@ -46,14 +39,13 @@ const displaySignUp = (req, res) => {
 
 const displayHome = async (req, res) => {
   try {
-    const userData = await User.findOne({
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
-    });
-
-    const user = userData.get({ plain: true });
-
+    // Grab all posts from the Post model
+    const postData = await Post.findAll();
+    // Serialize the data so it can be used by handlebars
+    const posts = postData.map((post) => post.get({ plain: true }));
+    // Render the homepage with the posts data
     res.render("home", {
+      posts,
       title: "Home",
       heading: "Home Page",
     });
@@ -67,14 +59,19 @@ const displayHome = async (req, res) => {
 
 const displayForum = async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          model: Comment,
+          attributes: ["id", "content", "user_id", "post_id", "created_at"],
+        },
+      ],
     });
 
-    const user = userData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
     res.render("forum", {
+      post,
       title: "Forum",
       heading: "Forum Page",
     });
