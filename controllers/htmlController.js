@@ -46,7 +46,7 @@ const displaySignUp = (req, res) => {
 };
 
 
-const displayDash = async (req, res) => { 
+const displayHome = async (req, res) => { 
   try {
    
     const userData = await User.findOne({
@@ -57,9 +57,9 @@ const displayDash = async (req, res) => {
     
     const user = userData.get({ plain: true });
     
-    res.render("dashboard", {
-      title: "Dashboard",
-      heading: "Dashboard Page",
+    res.render("home", {
+      title: "Home",
+      heading: "Home Page",
     });
   } catch (err) {
    
