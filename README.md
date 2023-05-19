@@ -28,7 +28,7 @@ Demonstration of the post page:
 
 ## Credits
 
-We would like to thank the following people for their contributions to this project: Frank Colorado, Apollo Demirel, Bader Mahdawi, Kaleo Dutta-allen, Deshan Meemanage, and the TAs and instructor. We would also like to thank the following resources for their help: BootStrap, Node.js, Express.js, Sequelize, MySQL, Handlebars, and Heroku. We also used resources from past classwork and homework assighments to help us with this project.
+We would like to thank the following people for their contributions to this project: Frank Colorado, Apollo Demirel, Bader Mahdawi, Kaleo Dutta-allen, Deshan Meemanage, and the TAs and instructor. We would also like to thank the following resources for their help: BootStrap, Node.js, Express.js, Sequelize, MySQL, Handlebars, and Heroku. We also used resources from past classwork and homework assignments to help us with this project.
 
 
 ## Links
