@@ -38,24 +38,58 @@ const displayLogin = (req, res) => {
 };
 
 const displaySignUp = (req, res) => {
+ 
   res.render("Signup", {
     title: "Signup",
     heading: "Signup Page",
   });
 };
 
-const displayHome = (req, res) => {
-  res.render("home", {
-    title: "Home",
-    heading: "Home Page",
-  });
-};
 
-const displayForum = (req, res) => {
-  res.render("forum", {
-    title: "Forum",
-    heading: "Forum Page",
-  });
+const displayDash = async (req, res) => { 
+  try {
+   
+    const userData = await User.findOne({
+      
+      attributes: { exclude: ["password"] },
+      where: { id: req.session.user_id },
+    });
+    
+    const user = userData.get({ plain: true });
+    
+    res.render("dashboard", {
+      title: "Dashboard",
+      heading: "Dashboard Page",
+    });
+  } catch (err) {
+   
+    res.status(500).json({ err });
+    console.error({ err });
+    console.log("Problem with displayDashboard in htmlController.js");
+  }
+
+ 
+const displayForum = async (req, res) => {
+  try {
+   
+    const userData = await User.findAll({
+      
+      attributes: { exclude: ["password"] },
+      where: { id: req.session.user_id },
+    });
+    
+    const user = userData.get({ plain: true });
+    
+    res.render("forum", {
+      title: "Forum",
+      heading: "Forum Page",
+    });
+  } catch (err) {
+   
+    res.status(500).json({ err });
+    console.error({ err });
+    console.log("Problem with displayForum in htmlController.js");
+  }
 };
 
 module.exports = {
