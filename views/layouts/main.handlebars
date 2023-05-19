@@ -24,6 +24,27 @@
       <div class="container-fluid p-2">
         <h1 style="color: white">My Rich Life</h1>
       </div>
+      {{#if loggedIn}}
+        <div class="dropdown">
+          <button
+            class="btn btn-info dropdown-toggle ml-3"
+            type="button"
+            id="dropdownBtn"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            +
+          </button>
+          <div id="dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a id="homeBtn" class="dropdown-item" href="/home">Home</a>
+            <a id="dashboardBtn" class="dropdown-item" href="/dashboard">Dashboard</a>
+            <a id="logoutBtn" class="dropdown-item" href="/logout">Log out</a>
+          </div>
+        </div>
+
+      {{/if}}
+
     </nav>
 
     <!-- Render the sub layout -->
