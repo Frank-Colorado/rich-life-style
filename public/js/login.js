@@ -1,18 +1,35 @@
+const $loginForm = document.getElementById("loginForm");
 const $username = document.getElementById("username");
-const $email = document.getElementById("email");
 const $password = document.getElementById("password");
 const $loginBtn = document.getElementById("loginBtn");
-const $signupBtn = document.getElementById("signupBtn");
+const $signupLink = document.getElementById("signupLink");
+const $alert = document.getElementById("alert");
 
+// This is a function called alertDisplay
+// It has 1 param called 'message'
+// It's purpose is to display the message in the alert element
+const alertDisplay = (message) => {
+  $alert.textContent = message;
+};
+
+// This is an event listener that listens for a click on the login button
+// It has 1 param called 'e'
 $loginBtn.addEventListener("click", async (e) => {
+  // We prevent the default behavior of the event
   e.preventDefault();
+  // We set any previous alert text to an empty string
+  $alert.textContent = "";
+  // We get the values from the form
   const username = $username.value;
   const password = $password.value.trim();
+  // We check if the username and password are empty
   if (!username || !password) {
-    return alert("Username and password must be provided");
+    // If any of them are empty, we display an alert
+    return alertDisplay("Username and password must be provided!");
   }
 
   try {
+    // We send a POST request to the server with the username and password
     const response = await fetch("/api/users/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -21,37 +38,14 @@ $loginBtn.addEventListener("click", async (e) => {
         password,
       }),
     });
+    // If the response is ok, we redirect the user to the home page
     if (response.ok) {
       location.href = `/`;
     } else {
-      alert("Incorrect username or password");
+      // If the response is not ok, we display an alert
+      return alertDisplay("Incorrect username or password. Please try again!");
     }
   } catch (error) {
-    alert(error);
-  }
-});
-
-$signupBtn.addEventListener("click", async (e) => {
-  e.preventDefault();
-  const username = $username.value;
-  const email = $email.value;
-  const password = $password.value.trim();
-  try {
-    const response = await fetch("/api/users/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username,
-        email,
-        password,
-      }),
-    });
-    if (response.ok) {
-      location.href = `/`;
-    } else {
-      alert("Failed to sign up");
-    }
-  } catch (error) {
-    alert(error);
+    console.log({ error });
   }
 });

@@ -1,7 +1,7 @@
 const { User } = require("../models");
 
 // This is a function that displays the home page if the user is logged in, otherwise it redirects the user to the login page.
-const displayHome = async (req, res) => {
+const displayDash = async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findOne({
@@ -12,10 +12,10 @@ const displayHome = async (req, res) => {
     // We modify the userData so it can be used by handlebars
     const user = userData.get({ plain: true });
     // We render the user_profile with the user's data
-    res.render("home", {
+    res.render("Dashboard", {
       user,
-      title: "Home",
-      heading: "Home Page",
+      title: "Dashboard",
+      heading: "User Dashboard",
     });
   } catch (err) {
     // Any server error will be handled by this catch
@@ -36,6 +36,7 @@ const displayLogin = (req, res) => {
     heading: "Login Page",
   });
 };
+
 const displaySignUp = (req, res) => {
  
   res.render("Signup", {
@@ -43,6 +44,7 @@ const displaySignUp = (req, res) => {
     heading: "Signup Page",
   });
 };
+
 
 const displayDash = async (req, res) => { 
   try {
@@ -65,11 +67,8 @@ const displayDash = async (req, res) => {
     console.error({ err });
     console.log("Problem with displayDashboard in htmlController.js");
   }
- 
- 
- 
-};
 
+ 
 const displayForum = async (req, res) => {
   try {
    
