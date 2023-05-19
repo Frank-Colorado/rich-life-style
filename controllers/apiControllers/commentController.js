@@ -3,7 +3,7 @@ const { Comment } = require("../../models");
 const router = require("express").Router();
 
 // This route will be called with /api/posts (POST)
-router.post("/", async (req, res) => {
+const createComment = async (req, res) => {
   try {
     // We create a new post with the title and content that was entered in the form
     const newComment = await Comment.create({
@@ -20,10 +20,10 @@ router.post("/", async (req, res) => {
     res.status(500).json({ err });
     console.log("Problem with createComment");
   }
-});
+};
 
 // This route will be called with /api/posts/:id (PUT)
-router.put("/:id", async (req, res) => {
+const updateComment = async (req, res) => {
   try {
     // We update the post with the title and content that was entered in the form
     const updatedComment = await Comment.update(
@@ -47,10 +47,10 @@ router.put("/:id", async (req, res) => {
     res.status(500).json({ err });
     console.log("Problem with updateComment");
   }
-});
+};
 
 // This route will be called with /api/posts/:id (DELETE)
-router.delete("/:id", async (req, res) => {
+const deleteComment = async (req, res) => {
   try {
     // We delete the post with the id that was sent to us in the params of the request
     const deletedComment = await Comment.destroy({
@@ -69,7 +69,7 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json({ err });
     console.log("Problem with deleteComment");
   }
-});
+};
 
 module.exports = {
   createComment,
