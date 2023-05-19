@@ -18,6 +18,7 @@ const displayDash = async (req, res) => {
   }
 };
 
+// This is a function that displays the login page if the user is logged in, otherwise it redirects the user to the home page.
 const displayLogin = (req, res) => {
   if (req.session.logged_in) {
     // We render the login page
@@ -30,6 +31,7 @@ const displayLogin = (req, res) => {
   });
 };
 
+// This is a function that displays the signup page
 const displaySignUp = (req, res) => {
   res.render("Signup", {
     title: "Signup",
@@ -37,6 +39,7 @@ const displaySignUp = (req, res) => {
   });
 };
 
+// This is a function that displays the home page if the user is logged in, otherwise it redirects the user to the login page.
 const displayHome = async (req, res) => {
   try {
     // Grab all posts from the Post model
@@ -56,20 +59,22 @@ const displayHome = async (req, res) => {
   }
 };
 
-
+// This is a function that displays the forum page for a specific post
 const displayForum = async (req, res) => {
   try {
+    // Grab the post with the id from the url
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
+          // Include all the comments for the post
           model: Comment,
           attributes: ["id", "content", "user_id", "post_id", "created_at"],
         },
       ],
     });
-
+    // Serialize the data so it can be used by handlebars
     const post = postData.get({ plain: true });
-
+    // Render the forum page with the post data
     res.render("forum", {
       post,
       title: "Forum",
