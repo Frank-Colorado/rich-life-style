@@ -67,7 +67,7 @@ const displayHome = async (req, res) => {
     console.error({ err });
     console.log("Problem with displayDashboard in htmlController.js");
   }
-
+};
  
 const displayForum = async (req, res) => {
   try {
