@@ -3,11 +3,13 @@ const { User } = require("../../models");
 // This is a function called createUser that will be called with /api/users/signup
 const createUser = async (req, res) => {
   try {
+    // We destructure the username, password, and email from the body of the request
+    const { username, password, email } = req.body;
     // We create a new user with the username, password, and email that was entered in the signup form
     const newUser = await User.create({
-      username: req.body.username,
-      password: req.body.password,
-      email: req.body.email,
+      username,
+      password,
+      email,
     });
     // After we create a new user, we create a session for the user
     req.session.save(() => {
