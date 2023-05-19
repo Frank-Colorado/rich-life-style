@@ -1,5 +1,5 @@
 const $dropdownBtn = document.getElementById("dropdownBtn");
-const $dropdownMenu = document.getElementById("dropdownMenu");
+const $dropdownMenu = document.getElementById("dropdown");
 const $logoutBtn = document.getElementById("logoutBtn");
 
 // This is an event listener that listens for a click on the dropdown button
