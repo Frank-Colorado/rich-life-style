@@ -15,6 +15,14 @@ Comment.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    author: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      references: {
+        model: "user",
+        key: "username",
+      },
+    },
     user_id: {
       type: DataTypes.UUID,
       references: {
