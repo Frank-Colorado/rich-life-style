@@ -64,6 +64,7 @@ const displayHome = async (req, res) => {
   }
 };
 
+
 const displayForum = async (req, res) => {
   try {
     const userData = await User.findAll({
