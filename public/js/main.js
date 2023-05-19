@@ -12,7 +12,7 @@ $dropdownBtn.addEventListener("click", () => {
 $logoutBtn.addEventListener("click", async () => {
   try {
     // We send a GET request to the server to logout the user
-    const response = await fetch("/api/users/logout", {
+    const response = await fetch("/logout", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
