@@ -1,11 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #414d55">
-  <div class="container-fluid p-2">
-    <h1 style="color: white">My Rich Life</h1>
-  </div>
-</nav>
-
-<div class="mb-3">
-    <h2>What does your rich life look like?</h2>
+<div class="mb-3 m-3">
+  <h2>What does your rich life look like?</h2>
   <label for="exampleFormControlTextarea1" class="form-label"></label>
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Envision and articulate your rich life here"></textarea>
+  <input
+    type="title"
+    id="title"
+    class="form-control mb-3"
+    placeholder="Title"
+  />
+  <textarea
+    class="form-control"
+    id="content"
+    rows="10"
+    placeholder="Envision and articulate your rich life here"
+  ></textarea>
+  <button id="postBtn" type="submit" class="btn btn-info mt-3">Post</button>
+  <p id="alert" style="color: red;"></p>
 </div>
+
+<script src="/js/dashboard.js"></script>

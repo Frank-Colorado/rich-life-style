@@ -1,19 +1,12 @@
-const { User } = require("../models");
+const { User, Post, Comment } = require("../models");
 
 // This is a function that displays the home page if the user is logged in, otherwise it redirects the user to the login page.
 const displayDash = async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findOne({
-      // We specify that we don't want the user's password to be returned
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
-    });
-    // We modify the userData so it can be used by handlebars
-    const user = userData.get({ plain: true });
-    // We render the user_profile with the user's data
+    // We render the user_profile with the user's data from the session
     res.render("Dashboard", {
-      user,
+      username: req.session.username,
+      loggedIn: req.session.logged_in,
       title: "Dashboard",
       heading: "User Dashboard",
     });
@@ -25,6 +18,7 @@ const displayDash = async (req, res) => {
   }
 };
 
+// This is a function that displays the login page if the user is logged in, otherwise it redirects the user to the home page.
 const displayLogin = (req, res) => {
   if (req.session.logged_in) {
     // We render the login page
@@ -37,55 +31,57 @@ const displayLogin = (req, res) => {
   });
 };
 
+// This is a function that displays the signup page
 const displaySignUp = (req, res) => {
- 
   res.render("Signup", {
     title: "Signup",
     heading: "Signup Page",
   });
 };
 
-
-const displayHome = async (req, res) => { 
+// This is a function that displays the home page if the user is logged in, otherwise it redirects the user to the login page.
+const displayHome = async (req, res) => {
   try {
-   
-    const userData = await User.findOne({
-      
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
-    });
-    
-    const user = userData.get({ plain: true });
-    
+    // Grab all posts from the Post model
+    const postData = await Post.findAll();
+    // Serialize the data so it can be used by handlebars
+    const posts = postData.map((post) => post.get({ plain: true }));
+    // Render the homepage with the posts data
     res.render("home", {
+      posts,
       title: "Home",
       heading: "Home Page",
     });
   } catch (err) {
-   
     res.status(500).json({ err });
     console.error({ err });
     console.log("Problem with displayDashboard in htmlController.js");
   }
 };
- 
+
+// This is a function that displays the forum page for a specific post
 const displayForum = async (req, res) => {
   try {
-   
-    const userData = await User.findAll({
-      
-      attributes: { exclude: ["password"] },
-      where: { id: req.session.user_id },
+    // Grab the post with the id from the url
+    const postData = await Post.findByPk(req.params.id, {
+      include: [
+        {
+          // Include all the comments for the post if there are any
+
+          model: Comment,
+          attributes: ["id", "content", "user_id", "post_id", "createdAt"],
+        },
+      ],
     });
-    
-    const user = userData.get({ plain: true });
-    
+    // Serialize the data so it can be used by handlebars
+    const post = postData.get({ plain: true });
+    // Render the forum page with the post data
     res.render("forum", {
+      post,
       title: "Forum",
       heading: "Forum Page",
     });
   } catch (err) {
-   
     res.status(500).json({ err });
     console.error({ err });
     console.log("Problem with displayForum in htmlController.js");
@@ -93,6 +89,7 @@ const displayForum = async (req, res) => {
 };
 
 module.exports = {
+  displayPosts,
   displayHome,
   displayLogin,
   displayDash,

@@ -25,6 +25,27 @@
       <div class="container-fluid p-2 navbar-font">
         <h1 style="color:#45415b; font-family: 'Bruno Ace', sans-serif;">Rich Lifestyle</h1>
       </div>
+      {{#if loggedIn}}
+        <div class="dropdown">
+          <button
+            class="btn btn-info dropdown-toggle ml-3"
+            type="button"
+            id="dropdownBtn"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            +
+          </button>
+          <div id="dropdown" class="show">
+            <a id="homeBtn" class="dropdown-item" href="/home">Home</a>
+            <a id="dashboardBtn" href="/dashboard">Dashboard</a>
+            <a id="logoutBtn" class="dropdown-item" href="/logout">Log out</a>
+          </div>
+        </div>
+
+      {{/if}}
+
     </nav>
 
     <!-- Render the sub layout -->
@@ -47,6 +68,8 @@
       -moz-background-size: cover; -o-background-size: cover; background-size:
       cover; }
     </style>
+
+    <script src="/js/main.js"></script>
 
   </body>
 </html>
