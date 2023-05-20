@@ -4,9 +4,9 @@ const $postContent = document.getElementById("content");
 const $postBtn = document.getElementById("postBtn");
 const $alert = document.getElementById("alert");
 
-// create a function that will check the length of the title and content
-// if the length is greater than 0, enable the button
-// if the length is 0, disable the button
+// This is a function called allowPost
+// It has no params
+// It's purpose is to enable the post button if the title and content are not empty
 const allowPost = () => {
   if ($postTitle.value.length > 0 && $postContent.value.length > 0) {
     $postBtn.disabled = false;
