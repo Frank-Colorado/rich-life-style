@@ -1,0 +1,17 @@
+  
+   
+<link rel="stylesheet" href="/css/home.css" />
+
+<div class="card-container">
+  {{#each cards}}
+    {{> cardTemplate}}
+  {{/each}}
+</div>
+   
+<template id="card-template">
+  <div class="dream-card">
+    <h3>{{title}}</h3>
+    <p>{{content}}</p>
+  </div>
+</template>
+

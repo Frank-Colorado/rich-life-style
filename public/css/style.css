@@ -1,3 +1,13 @@
 /* body {
     background-image: url("https://images.pexels.com/photos/19670/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
 } */
+
+.navbar {
+    border: 3px solid #45415bf0; 
+    background-image: url("/img/RichLifestyle-BG.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
