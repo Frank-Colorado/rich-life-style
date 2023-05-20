@@ -67,9 +67,15 @@ const displayForum = async (req, res) => {
       include: [
         {
           // Include all the comments for the post if there are any
-
           model: Comment,
-          attributes: ["id", "content", "user_id", "post_id", "createdAt"],
+          attributes: [
+            "id",
+            "content",
+            ["author", "commentAuthor"],
+            "user_id",
+            "post_id",
+            "createdAt",
+          ],
         },
       ],
     });
@@ -77,6 +83,7 @@ const displayForum = async (req, res) => {
     const post = postData.get({ plain: true });
     // Render the forum page with the post data
     res.render("forum", {
+      username: req.session.username,
       post,
       title: "Forum",
       heading: "Forum Page",
@@ -89,7 +96,6 @@ const displayForum = async (req, res) => {
 };
 
 module.exports = {
-  displayPosts,
   displayHome,
   displayLogin,
   displayDash,

@@ -17,7 +17,6 @@ Comment.init(
     },
     author: {
       type: DataTypes.STRING,
-      allowNull: false,
       references: {
         model: "user",
         key: "username",

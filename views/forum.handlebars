@@ -1,16 +1,28 @@
 {{! Posts written by users (with usernames) will be dsplayed here. }}
 <div>
+  <p>Posted by: {{post.user.username}} on {{post.createdAt}}</p>
   <h1>{{post.title}}</h1>
   <p>{{post.content}}</p>
-  <p>By: {{post.user.username}}</p>
+</div>
+<div>
+  <form id="comment-form">
+    <label for="content">Comment as {{username}}</label>
+    <textarea
+      id="commentInput"
+      name="content"
+      placeholder="What are your thoughts?"
+    ></textarea>
+    <button id="commentBtn" data-id="{{post.id}}">Comment</button>
+    <p id="alert" style="color: red;"></p>
+  </form>
 </div>
 
-{{#if post.Comment.length}}
+{{#if post.comments.length}}
   <h3>Comments</h3>
-  {{#each post.Comment}}
+  {{#each post.comments}}
     <div>
       <p>{{this.content}}</p>
-      <p>By: {{this.quote}}</p>
+      <p>By: {{this.commentAuthor}}</p>
       <p> {{this.createdAt}}</p>
     </div>
   {{/each}}
@@ -20,6 +32,4 @@
 
 {{! Form to add a comment to a post. }}
 
-<ul>
-
-</ul>
+<script src="/js/forum.js"></script>
