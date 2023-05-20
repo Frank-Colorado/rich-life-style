@@ -13,6 +13,7 @@ const createComment = async (req, res) => {
       user_id: req.session.user_id,
     });
     // We send a response to the client with the post's information
+    console.log(newComment);
     res.status(200).json({ comment: newComment, message: "Comment created!" });
   } catch (err) {
     // If anything goes wrong, on the server side

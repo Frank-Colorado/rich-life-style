@@ -16,14 +16,12 @@ $commentBtn.addEventListener("click", async (e) => {
   e.preventDefault();
   // We set any previous alert text to an empty string
   $alert.textContent = "";
-  // We set the comment input to an empty string
-  $commentInput.value = "";
   // We get the value from the comment input
   const content = $commentInput.value;
   // We get the data-id from the comment button
   const post_id = $commentBtn.getAttribute("data-id");
   // We check if the comment is empty
-  if (!comment) {
+  if (!content) {
     // If it is empty, we display an alert
     return alertDisplay("Comment must be provided!");
   }
@@ -39,6 +37,8 @@ $commentBtn.addEventListener("click", async (e) => {
     });
     // If the response is ok, we display an alert telling them the comment was created
     if (response.ok) {
+      // we set the comment input to an empty string
+      $commentInput.value = "";
       // The page is reloaded to display the new comment
       location.reload();
     } else {

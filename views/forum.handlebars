@@ -13,12 +13,13 @@
       placeholder="What are your thoughts?"
     ></textarea>
     <button id="commentBtn" data-id="{{post.id}}">Comment</button>
+    <p id="alert" style="color: red;"></p>
   </form>
 </div>
 
-{{#if post.Comment.length}}
+{{#if post.comments.length}}
   <h3>Comments</h3>
-  {{#each post.Comment}}
+  {{#each post.comments}}
     <div>
       <p>{{this.content}}</p>
       <p>By: {{this.commentAuthor}}</p>
