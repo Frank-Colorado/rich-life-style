@@ -5,3 +5,14 @@
 .show {
   display: none;
 }
+
+
+.navbar {
+    border: 3px solid #45415bf0; 
+    background-image: url("/img/RichLifestyle-BG.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  
