@@ -66,9 +66,10 @@ const displayForum = async (req, res) => {
     const postData = await Post.findByPk(req.params.id, {
       include: [
         {
-          // Include all the comments for the post
+          // Include all the comments for the post if there are any
+
           model: Comment,
-          attributes: ["id", "content", "user_id", "post_id", "created_at"],
+          attributes: ["id", "content", "user_id", "post_id", "createdAt"],
         },
       ],
     });
@@ -88,6 +89,7 @@ const displayForum = async (req, res) => {
 };
 
 module.exports = {
+  displayPosts,
   displayHome,
   displayLogin,
   displayDash,

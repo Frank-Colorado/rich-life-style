@@ -1,19 +1,25 @@
-
 {{! Posts written by users (with usernames) will be dsplayed here. }}
+<div>
+  <h1>{{post.title}}</h1>
+  <p>{{post.content}}</p>
+  <p>By: {{post.user.username}}</p>
+</div>
 
+{{#if post.Comment.length}}
+  <h3>Comments</h3>
+  {{#each post.Comment}}
+    <div>
+      <p>{{this.content}}</p>
+      <p>By: {{this.quote}}</p>
+      <p> {{this.createdAt}}</p>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No comments yet.</p>
+{{/if}}
 
-{{#each posts as |post|}}
-  <li>
-    <h3>{{post.title}}</h3>
-    <p>{{post.body}}</p>
-    <p>By: {{post.user.username}}</p>
-  </li>
-{{/each}}
+{{! Form to add a comment to a post. }}
 
 <ul>
 
-
-  
 </ul>
-
-
