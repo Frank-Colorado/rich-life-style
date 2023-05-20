@@ -10,7 +10,6 @@ const createComment = async (req, res) => {
       content: req.body.content,
       post_id: req.body.post_id,
       author: req.session.username,
-      // We save the user_id to the session
       user_id: req.session.user_id,
     });
     // We send a response to the client with the post's information

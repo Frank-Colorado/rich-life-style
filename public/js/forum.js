@@ -2,6 +2,13 @@ const $commentBtn = document.getElementById("commentBtn");
 const $commentInput = document.getElementById("commentInput");
 const $alert = document.getElementById("alert");
 
+// This is a function called allowPost
+// It has 1 param called 'message'
+// It's purpose is to display the message in the alert element
+const alertDisplay = (message) => {
+  $alert.textContent = message;
+};
+
 // This is an event listener that listens for a click on the create comment button
 // It has 1 param called 'e'
 $commentBtn.addEventListener("click", async (e) => {
