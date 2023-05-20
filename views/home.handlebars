@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="/css/home.css" />
 
 <div class="card-container">
-  {{if posts.length}}
-    {{#each posts}}
-      {{> postTemplate}}
+  {{#if posts.length}}
+    {{#each posts as |post|}}
+      {{> post-details}}
     {{/each}}
   {{else}}
     <h3>No posts yet...</h3>
