@@ -1,20 +1,18 @@
 .card-container {
-    display: flex;
-    flex-wrap: wrap; 
-    justify-content: center; 
-    align-items: flex-start; 
-  }
-  
-  .dream-card {
-    width: 300px; 
-    height: 250px;
-    margin: 10px; 
-    background-color: #0f0f11;
-    padding: 20px;
-    border-radius: 8px;
-    border: 2px solid #a6f0e3;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #fffcfc;
-  
-  
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dream-card {
+  width: 300px;
+  height: 250px;
+  margin: 10px;
+  background-color: #0f0f11;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #a6f0e3;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fffcfc;
+}
