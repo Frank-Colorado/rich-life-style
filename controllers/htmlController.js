@@ -67,9 +67,15 @@ const displayForum = async (req, res) => {
       include: [
         {
           // Include all the comments for the post if there are any
-
           model: Comment,
-          attributes: ["id", "content", "user_id", "post_id", "createdAt"],
+          attributes: [
+            "id",
+            "content",
+            ["author", "commentAuthor"],
+            "user_id",
+            "post_id",
+            "createdAt",
+          ],
         },
       ],
     });
