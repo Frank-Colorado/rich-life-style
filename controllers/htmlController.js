@@ -83,6 +83,7 @@ const displayForum = async (req, res) => {
     const post = postData.get({ plain: true });
     // Render the forum page with the post data
     res.render("forum", {
+      username: req.session.username,
       post,
       title: "Forum",
       heading: "Forum Page",
@@ -95,7 +96,6 @@ const displayForum = async (req, res) => {
 };
 
 module.exports = {
-  displayPosts,
   displayHome,
   displayLogin,
   displayDash,
