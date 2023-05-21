@@ -49,6 +49,7 @@ const displayHome = async (req, res) => {
     // Render the homepage with the posts data
     res.render("home", {
       posts,
+      loggedIn: req.session.logged_in,
       title: "Home",
       heading: "Home Page",
     });
@@ -83,6 +84,7 @@ const displayForum = async (req, res) => {
     const post = postData.get({ plain: true });
     // Render the forum page with the post data
     res.render("forum", {
+      loggedIn: req.session.logged_in,
       username: req.session.username,
       post,
       title: "Forum",
