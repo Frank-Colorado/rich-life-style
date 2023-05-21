@@ -1,35 +1,45 @@
 {{! Posts written by users (with usernames) will be dsplayed here. }}
-<div>
-  <p>Posted by: {{post.author}} on {{format_date post.createdAt}}</p>
-  <h1>{{post.title}}</h1>
-  <p>{{post.content}}</p>
+<div class="card m-auto mt-5" style="width: 40rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Posted by:
+      {{post.author}}
+      on
+      {{format_date post.createdAt}}</li>
+    <li class="list-group-item">{{post.title}}</li>
+    <li class="list-group-item">{{post.content}}</li>
+  </ul>
 </div>
-<div>
-  <form id="comment-form">
+
+<div class="card m-auto mt-2 d-block" style="width: 40rem;">
+  <form id="comment-form" class="row g-2 m-auto">
     <label for="content">Comment as {{username}}</label>
     <textarea
       id="commentInput"
       name="content"
       placeholder="What are your thoughts?"
     ></textarea>
-    <button id="commentBtn" data-id="{{post.id}}">Comment</button>
+    <button class="btn btn-info" id="commentBtn" data-id="{{post.id}}">Comment</button>
     <p id="alert" style="color: red;"></p>
   </form>
 </div>
 
+<div class="card m-auto mt-3 d-block" style="width: 40rem;">
+<h3>Comments</h3>
 {{#if post.comments.length}}
-  <h3>Comments</h3>
+  
   {{#each post.comments}}
-    <div>
-      <p>{{this.content}}</p>
-      <p>By: {{this.commentAuthor}}</p>
-      <p> {{format_date this.createdAt}}</p>
-    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">By: {{this.commentAuthor}} on
+      {{format_date this.createdAt}}
+      <br>
+      {{this.content}}</li>
+    
   {{/each}}
 {{else}}
-  <p>No comments yet.</p>
+  <li class="list-group-item">No comments yet.</li>
 {{/if}}
 
-{{! Form to add a comment to a post. }}
+</ul>
+</div>
 
 <script src="/js/forum.js"></script>
