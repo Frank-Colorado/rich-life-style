@@ -41,11 +41,6 @@ $postBtn.addEventListener("click", async (e) => {
     // If the title is too long, we display an alert
     return alertDisplay("Title must be less than 50 characters");
   }
-  // We check the content length
-  if (content.length > 1000) {
-    // If the content is too long, we display an alert
-    return alertDisplay("Content must be less than 1000 characters");
-  }
 
   try {
     // We send a POST request to the server with the title and content
