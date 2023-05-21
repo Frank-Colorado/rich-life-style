@@ -1,12 +1,15 @@
 <div id="post">
   <a class="dream-card-a" href="/forum/{{this.id}}">
     <div class="dream-card">
-      <h1 class="dream-card-title">{{this.title}}</h1>
+      <div class="dream-card-header">
+        <h1 class="dream-card-title">{{this.title}}</h1>
+        <p class="dream-card-details">Posted by:
+          {{this.author}}
+          on
+          {{format_date this.createdAt}}</p>
+      </div>
       <div class="dream-card-divider"></div>
-      <p class="dream-card-details">Posted by:
-        {{this.author}}
-        on
-        {{format_date this.createdAt}}</p>
+
       <p class="dream-card-content">{{this.content}}</p>
     </div>
   </a>
