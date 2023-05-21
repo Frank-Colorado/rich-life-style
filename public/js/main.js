@@ -10,10 +10,11 @@ $dropdownBtn.addEventListener("click", () => {
 
 // This is an event listener that listens for a click on the logout button
 $logoutBtn.addEventListener("click", async () => {
+  console.log("logoutBtn clicked");
   try {
     // We send a GET request to the server to logout the user
-    const response = await fetch("/logout", {
-      method: "GET",
+    const response = await fetch("/api/users/logout", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
     });
     // If the response is ok, we redirect the user to the login page
