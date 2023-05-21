@@ -16,12 +16,12 @@
   width: 300px;
   height: 250px;
   margin: 10px;
-  background-color: #0f0f11;
+  background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
-  border: 2px solid #a6f0e3;
+  border: 2px solid #45415b;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  color: #fffcfc;
+  color: #45415b;
   overflow: hidden;  
 }
 
@@ -32,7 +32,7 @@
 
 .dream-card-divider {
   height: 2px;
-  background-color: #a6f0e3;
+  background-color: #45415b;
   margin-bottom: 10px;
 }
 
@@ -42,7 +42,13 @@
 }
 
 .dream-card-content {
+  font-family: 'Wix Madefor Display', sans-serif;
   font-size: 12px;    
   height: calc(100% - 54px);
   overflow: hidden;   
+}
+
+.dream-card-a {
+  text-decoration: none;  /* Remove underline */
+  color: inherit;         /* Inherit color from parent element */
 }
