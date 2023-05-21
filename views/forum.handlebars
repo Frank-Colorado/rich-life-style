@@ -1,6 +1,6 @@
 {{! Posts written by users (with usernames) will be dsplayed here. }}
 <div>
-  <p>Posted by: {{post.user.username}} on {{post.createdAt}}</p>
+  <p>Posted by: {{post.author}} on {{format_date post.createdAt}}</p>
   <h1>{{post.title}}</h1>
   <p>{{post.content}}</p>
 </div>
@@ -23,7 +23,7 @@
     <div>
       <p>{{this.content}}</p>
       <p>By: {{this.commentAuthor}}</p>
-      <p> {{this.createdAt}}</p>
+      <p> {{format_date this.createdAt}}</p>
     </div>
   {{/each}}
 {{else}}
