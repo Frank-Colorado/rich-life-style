@@ -17,6 +17,8 @@ const allowPost = () => {
 
 document.addEventListener("input", allowPost);
 
+const checkPost = () => {};
+
 // This is a function called alertDisplay
 // It has 1 param called 'message'
 // It's purpose is to display the message in the alert element
@@ -34,10 +36,15 @@ $postBtn.addEventListener("click", async (e) => {
   // We get the values from the form
   const title = $postTitle.value;
   const content = $postContent.value;
-  // We check if the title and content are empty
-  if (!title || !content) {
-    // If any of them are empty, we display an alert
-    return alertDisplay("Title and content must be provided!");
+  // We check the title length
+  if (title.length > 50) {
+    // If the title is too long, we display an alert
+    return alertDisplay("Title must be less than 50 characters");
+  }
+  // We check the content length
+  if (content.length > 1000) {
+    // If the content is too long, we display an alert
+    return alertDisplay("Content must be less than 1000 characters");
   }
 
   try {
