@@ -1,14 +1,31 @@
 {{! Posts written by users (with usernames) will be dsplayed here. }}
-<div class="card m-auto mt-5" style="width: 40rem;">
-  <ul class="list-group list-group-flush">
+<link rel="stylesheet" href="/css/home.css" />
+<div class="card-container">
+<div id="post">
+    <div class="dream-card">
+      <div class="dream-card-header">
+        <h1 class="dream-card-title">{{post.title}}</h1>
+        <p class="dream-card-details">Posted by:
+          {{post.author}}
+          on
+          {{format_date post.createdAt}}</p>
+      </div>
+      <div class="dream-card-divider"></div>
+
+      <p class="dream-card-content">{{post.content}}</p>
+    </div>
+</div>
+</div>
+   
+
+  {{!-- <ul class="list-group list-group-flush">
     <li class="list-group-item">Posted by:
       {{post.author}}
       on
       {{format_date post.createdAt}}</li>
     <li class="list-group-item">{{post.title}}</li>
     <li class="list-group-item">{{post.content}}</li>
-  </ul>
-</div>
+  </ul> --}}
 
 <div class="card m-auto mt-2 d-block" style="width: 40rem;">
   <form id="comment-form" class="row g-2 m-auto">
