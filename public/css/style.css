@@ -16,10 +16,6 @@ textarea {
   resize: none;
 }
 
-a:hover {
-  background-color: #45415bf0 !important;
-}
-
 .navbar {
   font-family: "Bruno Ace", sans-serif;
   border: 3px solid #45415bf0;
@@ -42,7 +38,7 @@ a:hover {
 
 .dropdown {
   background-clip: padding-box;
-  background-color: #272b33;
+  background-color: white;
   border: max(1px, 0.0625rem) solid #45415bf0;
   border-radius: 6px;
   box-shadow: 0 8px 24px #010409;
@@ -55,6 +51,14 @@ a:hover {
   top: 70%;
   width: 160px;
   z-index: 100;
+}
+.dropdown a {
+  color: #45415bf0 !important;
+}
+
+a:hover {
+  background-color: transparent !important;
+  border: max(1px, 0.0625rem) solid #45415bf0;
 }
 
 h3 {
