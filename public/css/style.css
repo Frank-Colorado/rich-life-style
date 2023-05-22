@@ -12,6 +12,10 @@
   display: none;
 }
 
+textarea {
+  resize: none;
+}
+
 a:hover {
   background-color: #45415bf0 !important;
 }
