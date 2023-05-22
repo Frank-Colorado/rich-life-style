@@ -1,12 +1,5 @@
 .card-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.card-container {
-  display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
@@ -38,13 +31,13 @@
 }
 
 .dream-card-details {
-  font-size: 10px;
+  font-size: 12px;
   margin-bottom: 10px;
 }
 
 .dream-card-content {
   font-family: "Wix Madefor Display", sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   height: calc(100% - 54px);
   overflow: hidden;
 }
@@ -53,4 +46,3 @@
   text-decoration: none;
   color: inherit;
 }
-

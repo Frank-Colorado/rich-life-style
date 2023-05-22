@@ -1,45 +1,80 @@
 {{! Posts written by users (with usernames) will be dsplayed here. }}
-<div class="card m-auto mt-5" style="width: 40rem;">
-  <ul class="list-group list-group-flush">
+<div class="card-container">
+  <div id="post">
+    <div class="dream-card">
+      <div class="dream-card-header">
+        <h1 class="dream-card-title">{{post.title}}</h1>
+        <p class="dream-card-details">Posted by:
+          {{post.author}}
+          on
+          {{format_date post.createdAt}}</p>
+      </div>
+      <div class="dream-card-divider"></div>
+
+      <p class="dream-card-content">{{post.content}}</p>
+    </div>
+  </div>
+</div>
+
+{{!-- <ul class="list-group list-group-flush">
     <li class="list-group-item">Posted by:
       {{post.author}}
       on
       {{format_date post.createdAt}}</li>
     <li class="list-group-item">{{post.title}}</li>
     <li class="list-group-item">{{post.content}}</li>
-  </ul>
-</div>
+  </ul> --}}
 
-<div class="card m-auto mt-2 d-block" style="width: 40rem;">
-  <form id="comment-form" class="row g-2 m-auto">
-    <label for="content">Comment as {{username}}</label>
+<div class="card-container">
+  <div id="comment-form">
     <textarea
       id="commentInput"
+      class="dream-card"
       name="content"
       placeholder="What are your thoughts?"
+      style="width: 700px; height: 100px;"
     ></textarea>
-    <button class="btn btn-info" id="commentBtn" data-id="{{post.id}}">Comment</button>
-    <p id="alert" style="color: red;"></p>
-  </form>
+    <div class="text-end">
+      <p id="alert" style="color: red;" class="me-3"></p>
+      <label for="content">Comment as {{username}}</label>
+      <button
+        class="btn btn-info me-3"
+        id="commentBtn"
+        data-id="{{post.id}}"
+      >Comment</button>
+    </div>
+  </div>
+
 </div>
 
-<div class="card m-auto mt-3 d-block" style="width: 40rem;">
-<h3>Comments</h3>
-{{#if post.comments.length}}
-  
-  {{#each post.comments}}
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">By: {{this.commentAuthor}} on
-      {{format_date this.createdAt}}
-      <br>
-      {{this.content}}</li>
-    
-  {{/each}}
-{{else}}
-  <li class="list-group-item">No comments yet.</li>
-{{/if}}
+{{!-- <ul class="list-group list-group-flush py-5">
+        <li class="list-group-item">By:
+          {{this.commentAuthor}}
+          on
+          {{format_date this.createdAt}}
+          <br />
+          {{this.content}}</li>
+      </ul> --}}
 
-</ul>
+<div class="card-container mt-5">
+  <h3>Comments</h3>
+  {{#if post.comments.length}}
+    {{#each post.comments}}
+      <div class="dream-card" style="width: 700px; height: 100px;">
+        <div class="d-flex">
+          <div>
+            <h3>{{this.commentAuthor}}</h3>
+            <p class="dream-card-details">Posted on
+              {{format_date this.createdAt}}</p>
+          </div>
+        </div>
+        <div>{{this.content}}</div>
+      </div>
+    {{/each}}
+  {{else}}
+    <h3 class="mt-5">No comments yet...</h3>
+  {{/if}}
+
 </div>
 
 <script src="/js/forum.js"></script>
