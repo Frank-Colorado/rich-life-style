@@ -38,4 +38,4 @@ We would like to thank the following people for their contributions to this proj
 ## Links
 
 Github: [Rich Lifestyle Repo](https://github.com/Frank-Colorado/rich-life-style).
-Heroku: [Rich Lifestyle Heroku Web App]().
+Heroku: [Rich Lifestyle Heroku Web App](https://rich.herokuapp.com/signup).
