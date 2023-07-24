@@ -4,7 +4,7 @@ const { User, Post, Comment } = require("../models");
 const displayDash = async (req, res) => {
   try {
     // We render the user_profile with the user's data from the session
-    res.render("Dashboard", {
+    res.render("dashboard", {
       username: req.session.username,
       loggedIn: req.session.logged_in,
       title: "Dashboard",
@@ -33,7 +33,7 @@ const displayLogin = (req, res) => {
 
 // This is a function that displays the signup page
 const displaySignUp = (req, res) => {
-  res.render("Signup", {
+  res.render("signup", {
     title: "Signup",
     heading: "Signup Page",
   });
